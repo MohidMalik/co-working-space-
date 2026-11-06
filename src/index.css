@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Dark theme overrides for executive workspace console (excluding printable A4 sheet) */
+html.dark body {
+  background-color: #0b1120;
+  color: #f1f5f9;
+}
+
+html.dark .app-shell-bg {
+  background-color: #0b1120 !important;
+  color: #f1f5f9 !important;
+}
+
+html.dark main .bg-white,
+html.dark header.bg-white,
+html.dark .fixed .bg-white:not(.a4-print-sheet) {
+  background-color: #111827 !important;
+  color: #f1f5f9 !important;
+}
+
+html.dark main .bg-slate-50,
+html.dark main .bg-slate-50\/80,
+html.dark main .bg-slate-50\/60,
+html.dark main .bg-slate-50\/50,
+html.dark .fixed .bg-slate-50:not(.a4-print-sheet *) {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+}
+
+html.dark main .bg-slate-100,
+html.dark header .bg-slate-100,
+html.dark .fixed .bg-slate-100:not(.a4-print-sheet *) {
+  background-color: #1e293b !important;
+  color: #cbd5e1 !important;
+}
+
+html.dark main .border-slate-200,
+html.dark main .border-slate-200\/80,
+html.dark main .border-slate-200\/70,
+html.dark main .border-slate-100,
+html.dark main .border-slate-300,
+html.dark header.border-slate-200\/80,
+html.dark .fixed .border-slate-200:not(.a4-print-sheet *),
+html.dark .fixed .border-slate-300:not(.a4-print-sheet *),
+html.dark .fixed .border-slate-100:not(.a4-print-sheet *) {
+  border-color: #334155 !important;
+}
+
+html.dark main .divide-slate-100 > :not([hidden]) ~ :not([hidden]),
+html.dark main .divide-slate-200 > :not([hidden]) ~ :not([hidden]),
+html.dark .fixed .divide-slate-200:not(.a4-print-sheet *) > :not([hidden]) ~ :not([hidden]) {
+  border-color: #1e293b !important;
+}
+
+html.dark main .text-slate-900,
+html.dark header .text-slate-900,
+html.dark .fixed .text-slate-900:not(.a4-print-sheet *):not(.bg-white.text-slate-900) {
+  color: #f8fafc !important;
+}
+
+html.dark main .text-slate-800,
+html.dark .fixed .text-slate-800:not(.a4-print-sheet *) {
+  color: #e2e8f0 !important;
+}
+
+html.dark main .text-slate-700,
+html.dark header .text-slate-700,
+html.dark .fixed .text-slate-700:not(.a4-print-sheet *) {
+  color: #cbd5e1 !important;
+}
+
+html.dark main .text-slate-600,
+html.dark .fixed .text-slate-600:not(.a4-print-sheet *) {
+  color: #94a3b8 !important;
+}
+
+html.dark main .text-slate-500,
+html.dark .fixed .text-slate-500:not(.a4-print-sheet *) {
+  color: #94a3b8 !important;
+}
+
+html.dark main input:not([type="checkbox"]):not([type="radio"]),
+html.dark main select,
+html.dark main textarea,
+html.dark .fixed input:not([type="checkbox"]):not([type="radio"]):not(.a4-print-sheet *),
+html.dark .fixed select:not(.a4-print-sheet *),
+html.dark .fixed textarea:not(.a4-print-sheet *) {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  border-color: #334155 !important;
+}
+
+html.dark main tr.hover\:bg-slate-50:hover,
+html.dark main tr.hover\:bg-slate-50\/80:hover {
+  background-color: #1e293b !important;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-document-area,
+  #printable-document-area * {
+    visibility: visible;
+  }
+  #printable-document-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    box-shadow: none !important;
+    border: none !important;
+  }
+}

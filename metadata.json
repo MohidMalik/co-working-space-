@@ -1,0 +1,6 @@
+{
+  "name": "DaftarPro Coworking Management System",
+  "description": "Enterprise offline-first Coworking Space, Office Rental, Contract, A4 Invoicing, and Financial Management System with SQLite persistence.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

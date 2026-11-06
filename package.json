@@ -1,0 +1,71 @@
+{
+  "name": "coworking-space",
+  "private": true,
+  "version": "1.0.0",
+  "main": "electron.cjs",
+  "scripts": {
+    "dev": "tsx server.ts",
+    "build": "vite build",
+    "postbuild": "npx esbuild server-prod.ts --bundle --platform=node --format=cjs --outfile=server-prod.cjs && node -e \"const fs=require('fs');if(fs.existsSync('node_modules/sql.js/dist/sql-wasm.wasm'))fs.copyFileSync('node_modules/sql.js/dist/sql-wasm.wasm','sql-wasm.wasm');\"",
+    "electron:dev": "concurrently \"npm run dev\" \"wait-on http://localhost:5173 && electron .\"",
+    "dist": "npm run build && electron-builder",
+    "start": "tsx server.ts",
+    "preview": "vite preview",
+    "clean": "rm -rf web-dist dist server.js",
+    "lint": "tsc --noEmit"
+  },
+  "build": {
+    "appId": "com.coworkingspace.app",
+    "productName": "Coworking Space",
+    "files": [
+      "web-dist/**/*",
+      "electron.cjs"
+    ],
+    "extraResources": [
+      {
+        "from": "server-prod.cjs",
+        "to": "server-prod.cjs"
+      },
+      {
+        "from": "sql-wasm.wasm",
+        "to": "sql-wasm.wasm"
+      }
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    }
+  },
+  "dependencies": {
+    "@google/genai": "^2.4.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-react": "^6.1.1",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "lucide-react": "^0.546.0",
+    "motion": "^12.23.24",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
+    "sql.js": "^1.14.2",
+    "vite": "^8.3.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^10.0.5",
+    "electron": "^44.4.5",
+    "electron-builder": "^26.15.3",
+    "esbuild": "^0.25.0",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.21.0",
+    "typescript": "^7.0.2",
+    "wait-on": "^9.1.0"
+  }
+}
